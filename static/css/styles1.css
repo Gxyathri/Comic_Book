@@ -1,0 +1,185 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: url('static/yellowsky.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+}
+
+.main-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+
+
+.page.active {
+    z-index: 1;
+}
+
+.page.inactive {
+    z-index: 0;
+}
+
+.page.previous {
+    transform-origin: right center;
+    transform: rotateY(-180deg);
+}
+
+.page.next {
+    transform-origin: left center;
+    transform: rotateY(180deg);
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #000;
+    font-size: 24px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 2;
+    transition: background-color 0.3s;
+}
+
+#prevBtn {
+    left: calc(50% - 400px);
+}
+
+#nextBtn {
+    right: calc(50% - 400px);
+}
+
+.arrow:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.volume-icon {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.volume-icon-on,
+.volume-icon-off {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+.volume-icon-on {
+    background-image: url('static/volume-on.png');
+}
+
+.volume-icon-off {
+    background-image: url('static/volume-off.png');
+}
+
+.button-container {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 2;
+}
+
+#downloadButton,
+#viewVideoButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    background-color: black;
+    border: none;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+#downloadButton:hover,
+#viewVideoButton:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+#downloadButton:active,
+#viewVideoButton:active {
+    background-color: #000000;
+    box-shadow: 0 2px #0f0f0f;
+    transform: translateY(2px);
+}
+
+#downloadButton i {
+    margin-right: 5px;
+}
+
+/* ... (keep previous CSS styles) ... */
+
+.page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.5s;
+    border-radius: 20px;
+    border: 5px solid rgb(0, 0, 0);
+    overflow: hidden;
+}
+
+.page.hidden {
+    display: none;
+}
+
+.page img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Changed from cover to contain */
+    border-radius: 15px;
+}
+
+.flipbook-container {
+    width: 600px;  /* Adjusted width */
+    height: 500px; /* Adjusted height */
+    perspective: 1000px;
+    position: relative;
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
