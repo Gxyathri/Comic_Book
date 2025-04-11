@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipbook</title>
+    <link rel="stylesheet" href="static/css/styles1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="background-image"></div>
+    
+    <div class="main-container">
+        <!-- Flipbook Container -->
+        <div id="flipbook" class="flipbook-container">
+            {% for page in pages %}
+            <div class="page {% if not loop.first %}hidden{% endif %}">
+                <img src="{{ page.image_path }}" alt="Page {{ loop.index }}">
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div id="prevBtn" class="arrow">&#10094;</div>
+        <div id="nextBtn" class="arrow">&#10095;</div>
+    </div>
+        <!-- Volume Controls -->
+        <div id="volumeBtn" class="volume-icon">
+            <img id="volumeOnIcon" class="volume-icon-on" src="static/volume-on.png" alt="Volume On Icon">
+            <img id="volumeOffIcon" class="volume-icon-off" src="static/volume-off.png" alt="Volume Off Icon">
+        </div>
+
+        <!-- Button Container -->
+        <div class="button-container">
+            <a href="/download_pdf" download="flipbook.pdf">
+                <button id="downloadButton"><i class="fa fa-download"></i> Download PDF</button>
+            </a>
+            <a href="/video">
+                <button id="viewVideoButton">View Video</button>
+            </a>
+        </div>
+
+        <!-- Audio Elements -->
+        <audio id="pageFlipSound">
+            <source src="static/page.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="backgroundMusic" loop>
+            <source src="static/bg.mp3" type="audio/mpeg">
+        </audio>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        var value = "{{value}}";
+    </script>
+    <script src="static/js/script1.js"></script>
+</body>
+</html>
